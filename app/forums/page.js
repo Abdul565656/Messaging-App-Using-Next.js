@@ -44,30 +44,45 @@ const Forums = () => {
         }
     ];
     return (
-        <div className="bg-gray-100 py-16">
+        <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 py-20">
             <div className="container mx-auto px-4">
-                <h1 className="text-4xl font-bold text-center text-gray-800 mb-12">Discussion Forums</h1>
+                <h1 className="text-6xl font-extrabold text-center text-white mb-4 tracking-tight">
+                    <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600">
+                        Discussion Forums
+                    </span>
+                </h1>
+                <p className="text-xl text-center text-gray-300 mb-16 max-w-2xl mx-auto font-light">
+                    Join our thriving community of developers and tech enthusiasts to explore, learn and grow together
+                </p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                     {topics.map((topic) => (
                         <div
                             key={topic.img}
-                            className="flex flex-col bg-white rounded-3xl shadow-lg p-8 hover:shadow-xl transition-shadow duration-300
-                            border border-gray-200" 
+                            className="group bg-gray-800/80 rounded-lg overflow-hidden border border-gray-700 hover:border-purple-500 transition-all duration-300 ease-out transform hover:-translate-y-1 shadow-xl"
                         >
-                            <div className="flex-shrink-0 self-center w-20 h-20 mb-4 relative"> 
-                                <img src={topic.img} alt={topic.text} className="w-full h-full object-cover rounded-full" />
+                            <div className="h-48 relative overflow-hidden">
+                                <div className="absolute inset-0 bg-gradient-to-br from-purple-900/90 to-gray-900/90 group-hover:opacity-90 transition-opacity duration-300" />
+                                <div className="absolute inset-0 flex items-center justify-center">
+                                    <div className="w-24 h-24 rounded-lg bg-gray-800 p-3 shadow-lg transform group-hover:scale-105 transition-transform duration-300">
+                                        <img src={topic.img} alt={topic.text} className="w-full h-full object-cover rounded-lg" />
+                                    </div>
+                                </div>
                             </div>
-                            <h2 className="text-xl font-semibold text-gray-800 text-center mb-3">{topic.text}</h2> 
-                            <p className="text-gray-600 text-center text-sm mb-6 flex-grow line-clamp-2"> 
-                                {topic.description}
-                            </p>
-                            <Link href={`/forum/${topic.slug}`}>
-                            <button
-                                className="px-6 py-2.5 rounded-full text-white font-semibold bg-blue-500 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition-colors duration-200"
-                            >
-                                Discuss Now
-                            </button>
-                            </Link>
+                            <div className="p-6">
+                                <h2 className="text-xl font-bold text-white mb-3 group-hover:text-purple-400 transition-colors duration-300">
+                                    {topic.text}
+                                </h2>
+                                <p className="text-gray-400 mb-6 text-sm line-clamp-2 group-hover:text-gray-300 transition-colors duration-300">
+                                    {topic.description}
+                                </p>
+                                <Link href={`/forum/${topic.slug}`} className="block">
+                                    <button
+                                        className="w-full px-4 py-3 rounded-lg text-white font-medium bg-purple-800 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-50 transition-all duration-300 shadow-md"
+                                    >
+                                        Join Discussion
+                                    </button>
+                                </Link>
+                            </div>
                         </div>
                     ))}
                 </div>

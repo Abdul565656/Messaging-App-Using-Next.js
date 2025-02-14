@@ -47,23 +47,35 @@ const ChatForum = ({ clerkUser, slug }) => {
   );
 
   return (
-    <div className="flex h-screen w-full flex-col items-center bg-gray-50 p-4">
-      <div className="w-full max-w-4xl rounded-lg bg-white p-4 shadow-md">
-        <h2 className="mb-4 text-center text-2xl font-bold text-gray-800">
+    <div className="flex h-screen w-full flex-col items-center bg-gradient-to-br from-blue-900 via-indigo-900 to-purple-900 p-6">
+      <div className="w-full max-w-6xl rounded-xl bg-white/10 backdrop-blur-lg p-8 shadow-2xl border border-white/20 hover:border-blue-400/30 transition-all duration-300">
+        <h2 className="mb-8 text-center text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400">
           {Capitalize(slug)} Discussions
         </h2>
         <Chat client={client} theme="messaging light">
           <Channel channel={channel}>
             <Window>
-              <ChannelHeader className="border-b pb-2" />
-              <div className="overflow-y-auto max-h-[70vh]">
-                <MessageList className="p-2" />
+              <ChannelHeader 
+                className="border-b border-gray-200/20 pb-4 text-white font-semibold backdrop-blur" 
+              />
+              <div className="overflow-y-auto max-h-[65vh] scrollbar-thin scrollbar-thumb-purple-500 scrollbar-track-gray-700">
+                <MessageList 
+                  className="p-4"
+                  messageActions={["edit", "delete", "react", "reply"]}
+                />
               </div>
-              <div className="border-t pt-2">
-                <MessageInput className="rounded-lg bg-gray-100 p-2 focus:ring-2 focus:ring-blue-500" />
+              <div className="border-t border-gray-700 pt-3">
+                <MessageInput 
+                  className="rounded-lg bg-gray-700 p-3 focus:ring-2 focus:ring-purple-500 text-white placeholder-gray-400"
+                  focus
+                  attachButton
+                  emojiPicker
+                />
               </div>
             </Window>
-            <Thread className="mt-4" />
+            <Thread 
+              className="mt-4 bg-gray-800/50 rounded-lg p-4 border border-purple-500/20"
+            />
           </Channel>
         </Chat>
       </div>

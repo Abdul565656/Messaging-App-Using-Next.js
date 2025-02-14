@@ -32,7 +32,7 @@ function HomePage() {
                 Experience the future of communication. Secure, fast, and beautifully designed.
               </p>
               <div className="space-x-4">
-                <Link href="/signup">
+                <Link href={`/forums`}>
                   <button className="bg-white text-purple-700 hover:bg-purple-100 hover:text-purple-800 px-8 py-3 rounded-full text-lg font-semibold shadow-lg transition duration-300">
                     Get Started
                   </button>
@@ -131,32 +131,32 @@ function HomePage() {
               <div className="p-6 bg-white rounded-lg shadow-md border border-gray-200">
                 <p className="text-gray-600 italic mb-4">"Connectivity has transformed the way our team collaborates. It's so much faster and more reliable than our old system!"</p>
                 <div className="flex items-center">
-                  <div className="w-10 h-10 rounded-full bg-gray-300 mr-3"></div> {/* Placeholder for avatar */}
+                  <img className="w-10 h-10 rounded-full mr-3" src="https://t4.ftcdn.net/jpg/03/83/25/83/360_F_383258331_D8imaEMl8Q3lf7EKU2Pi78Cn0R7KkW9o.jpg" alt="Sarah M." />
                   <div>
                     <p className="font-semibold text-gray-800">Sarah M.</p>
                     <p className="text-gray-500">Project Manager</p>
                   </div>
                 </div>
               </div>
-                {/* Testimonial 2 & 3 (repeat structure) */}
+              {/* Testimonial 2 */}
               <div className="p-6 bg-white rounded-lg shadow-md border border-gray-200">
-                <p className="text-gray-600 italic mb-4">"Connectivity has transformed the way our team collaborates. It's so much faster and more reliable than our old system!"</p>
+                <p className="text-gray-600 italic mb-4">"This platform has made communication within our team seamless. I can't imagine working without it!"</p>
                 <div className="flex items-center">
-                  <div className="w-10 h-10 rounded-full bg-gray-300 mr-3"></div> {/* Placeholder for avatar */}
+                  <img className="w-10 h-10 rounded-full mr-3" src="https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="Alex M." />
                   <div>
                     <p className="font-semibold text-gray-800">Alex M.</p>
-                    <p className="text-gray-500">Project Manager</p>
+                    <p className="text-gray-500">Software Engineer</p>
                   </div>
                 </div>
               </div>
-
+              {/* Testimonial 3 */}
               <div className="p-6 bg-white rounded-lg shadow-md border border-gray-200">
-                <p className="text-gray-600 italic mb-4">"Connectivity has transformed the way our team collaborates. It's so much faster and more reliable than our old system!"</p>
+                <p className="text-gray-600 italic mb-4">"The best collaboration tool our team has ever used. Highly recommended!"</p>
                 <div className="flex items-center">
-                  <div className="w-10 h-10 rounded-full bg-gray-300 mr-3"></div> {/* Placeholder for avatar */}
+                  <img className="w-10 h-10 rounded-full mr-3" src="https://img.freepik.com/free-photo/close-up-young-successful-man-smiling-camera-standing-casual-outfit-against-blue-background_1258-65479.jpg" alt="David M." />
                   <div>
                     <p className="font-semibold text-gray-800">David M.</p>
-                    <p className="text-gray-500">Project Manager</p>
+                    <p className="text-gray-500">Team Lead</p>
                   </div>
                 </div>
               </div>
