@@ -1,76 +1,71 @@
-"use client"
-import Link from 'next/link';
-import { UserButton } from '@clerk/nextjs';
-// import { useUser } from '@clerk/nextjs';
-
+"use client";
+import Link from "next/link";
+import { UserButton } from "@clerk/nextjs";
+import { useState } from "react";
+import { Menu, X } from "lucide-react";
 
 function Navbar() {
-  // const user = useUser();
-  // console.log(user.user?.id)
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
-    <nav className="bg-gray-800 py-4">
-      <div className="container mx-auto flex flex-wrap items-center justify-between">
-        {/* Logo (Left Side) */}
-        <Link href="/" className="flex items-center">
-          
-        <h1>Conncectivity</h1>
-            <span className="sr-only">Home</span>  {/*  For Screen Readers. */}
-          
+    <nav className="bg-gradient-to-r from-purple-700 to-indigo-700 shadow-lg relative z-50">
+      <div className="container mx-auto flex items-center justify-between px-6 py-4">
+        {/* Logo */}
+        <Link href="/" className="text-white text-3xl font-bold tracking-wide">
+          Connectivity
         </Link>
 
-        {/* Navigation Links (Right Side) */}
-        <div className="flex md:order-2">
-            {/* Mobile Menu Button (Hidden on larger screens) */}
-            <button
-              type="button"
-              className="md:hidden text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white"
-              aria-controls="navbar-items"  // Important for accessibility, connects button to the menu
-              aria-expanded="false"  // Important for accessibility, indicates if the menu is open
-            >
-               <svg
-                 className="w-6 h-6"
-                 aria-hidden="true"
-                 fill="currentColor"
-                 viewBox="0 0 20 20"
-                 xmlns="http://www.w3.org/2000/svg"
-               >
-                <path
-                   fillRule="evenodd"
-                   d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
-                   clipRule="evenodd"
-                 ></path>
-              </svg>
-              <span className="sr-only">Open main menu</span>
-            </button>
-
-
-          {/*  You can place a button here or a user icon here  */}
+        {/* Mobile Menu Button */}
+        <div className="md:hidden">
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="text-white focus:outline-none"
+          >
+            {isOpen ? <X size={28} /> : <Menu size={28} />}
+          </button>
         </div>
 
+        {/* Navigation Links */}
         <div
-          className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" //Hidden by default, flex on medium and up.
-          id="navbar-items" // ID used for accessibility, connected to the button above
+          className={`absolute top-16 left-0 w-full bg-purple-800 md:bg-transparent md:static md:flex md:space-x-8 md:w-auto transition-all duration-300 ease-in-out ${
+            isOpen ? "block" : "hidden"
+          }`}
+          style={{ zIndex: 50 }} // Ensure it appears above other elements
         >
-          <ul className="flex flex-col p-4 mt-4 border border-gray-700 rounded-lg bg-gray-700 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-gray-800">
+          <ul className="flex flex-col md:flex-row md:items-center md:space-x-8 text-white font-medium text-lg">
             <li>
-              <Link href="/" className="block py-2 pl-3 pr-4 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-500 md:p-0">
+              <Link
+                href="/"
+                className="block py-2 px-4 hover:text-yellow-300 transition duration-300"
+                onClick={() => setIsOpen(false)} // Close menu on click
+              >
                 Home
               </Link>
             </li>
             <li>
-              <Link href="/forums" className="block py-2 pl-3 pr-4 text-gray-300 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-500 md:p-0">
+              <Link
+                href="/forums"
+                className="block py-2 px-4 hover:text-yellow-300 transition duration-300"
+                onClick={() => setIsOpen(false)}
+              >
                 Forums
               </Link>
             </li>
             <li>
-              <Link href="/chat" className="block py-2 pl-3 pr-4 text-gray-300 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-500 md:p-0">
+              <Link
+                href="/chat"
+                className="block py-2 px-4 hover:text-yellow-300 transition duration-300"
+                onClick={() => setIsOpen(false)}
+              >
                 UserChat
               </Link>
             </li>
-            <li>
-                <UserButton/>
-            </li>
           </ul>
+        </div>
+
+        {/* User Profile Button */}
+        <div className="hidden md:flex items-center">
+          <UserButton />
         </div>
       </div>
     </nav>
